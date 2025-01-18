@@ -31,10 +31,10 @@ yearlyLiveBirths <- yearlyLiveBirths %>%
 # Calculate the mean live births across all 10 years
 meanLiveBirths <- mean(yearlyLiveBirths$LiveBirths)
 
-# Add new column to assign different color based on
+# Add new column to assign different colour based on
 # whether the number of live birth is above or below the mean
 yearlyLiveBirths <- yearlyLiveBirths %>%
-	mutate(Color = ifelse(LiveBirths > meanLiveBirths, "#f8766d", "#619cff"))
+	mutate(Colour = ifelse(LiveBirths > meanLiveBirths, "#4f6f7c", "#f8766d"))
 
 # ======================================= Data Visualisation =======================================
 
@@ -48,8 +48,7 @@ yearlyLiveBirths %>%
 			y = meanLiveBirths,
 			yend = LiveBirths
 		),
-		color = ifelse(yearlyLiveBirths$Year == "2023", "#BF2F24",
-			ifelse(yearlyLiveBirths$LiveBirths > meanLiveBirths, "#4f6f7c", "#f8766d")),
+		color = ifelse(yearlyLiveBirths$Year == "2023", "#BF2F24", yearlyLiveBirths$Colour),
 		alpha = 0.8,
 		linewidth = ifelse(yearlyLiveBirths$Year == "2023", 2.5, 1.8)
 	) +
